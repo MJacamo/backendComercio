@@ -7,7 +7,7 @@ module.exports = {
             .find()        
             .populate('category')
             .populate('provider');        
-            catalogos? res.status(200).send({data: catalogos}):res.status(400).send({msg: 'problemas al cargar catalogos.'});
+            catalogos? res.status(200).send({catalogos}):res.status(400).send({msg: 'problemas al cargar catalogos.'});
         } catch (error) {
             res.send({error, msg:'Ocurrio un error al cargar.'}); 
         }
@@ -20,7 +20,7 @@ module.exports = {
             .findById(id)        
             .populate('category')
             .populate('provider');        
-            catalogos? res.status(200).send({data: catalogos}):res.status(400).send({msg: 'problemas al cargar catalogos.'});
+            catalogos? res.status(200).json(catalogos):res.status(400).send({msg: 'problemas al cargar catalogos.'});
         } catch (error) {
             res.send({error, msg:'Ocurrio un error al cargar.'}); 
         }
@@ -54,7 +54,7 @@ module.exports = {
       },
       deleteOne: async (req, res) => {
           try {
-            const { id } = req.params;
+            const { id } = req.params;            
             const deletedCatalogo = await catalogosModel.findByIdAndDelete(id);
             res.send(`${deletedCatalogo.name} eliminado`);
           } catch (error) {

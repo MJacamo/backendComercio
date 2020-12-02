@@ -6,7 +6,7 @@ const categoriasSchema = new Schema(
     {
         name: { type: String, uppercase:true, required: true, unique:true },
         description: { type: String },
-        abbreviation: {type: String, required:true},
+        abbreviation: {type: String},
     },
     { timestamps: true }
 );

@@ -14,7 +14,9 @@ validateRequiredEnvs(requiredEnvs);
 const { mongoDBHelpers } = require('./helpers');
 
 (async () => {
- await mongoDBHelpers.connect();   
+ await mongoDBHelpers.connect();
+ const {creaData} = require('./database/fake'); 
+ creaData();  
   require('./server');
 })();
 

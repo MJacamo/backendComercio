@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res)=> res.send({name: 'todos'}));
+const {createOne, getAll} = require('../controllers/categorias');
+
+router.get('/', getAll);
 router.get('/:id', (req, res)=> res.send({name: 'uno', key:req.params.id}));
-router.post('/', (req, res)=> res.send({name: 'crear'}));
+router.post('/', createOne);
 router.put('/:id', (req, res)=> res.send({name: 'Elimina', key: req.params.id}));
 router.delete('/:id', (req, res)=> res.send({name: 'Elimina', key: req.params.id}));
 

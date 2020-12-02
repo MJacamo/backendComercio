@@ -1,16 +1,15 @@
-const mongoose, {Schema} = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 
 const categoriasSchema = new Schema(
     {
         name: { type: String, uppercase:true, required: true, unique:true },
         description: { type: String },
-        abbreviation: {type: Number, required:true},
+        abbreviation: {type: String, required:true},
     },
     { timestamps: true }
 );
-
-schema.plugin(require('mongoose-autopopulate'));
 
 const model = mongoose.model('categorias', categoriasSchema);
 module.exports = model;

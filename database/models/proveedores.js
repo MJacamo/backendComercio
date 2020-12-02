@@ -1,17 +1,16 @@
-const mongoose, {Schema} = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 
 const proveedorSchema = new Schema(
     {
-        name: { type: String, uppercase:true, required: true, unique:true },
-        identification: { type: String },
+        name: { type: String, uppercase:true, required: true},
+        identification: { type: String, required: true, unique:true  },
         address: {type: Number},
         phone: {type: String},
     },
     { timestamps: true }
 );
-
-schema.plugin(require('mongoose-autopopulate'));
 
 const model = mongoose.model('proveedores', proveedorSchema);
 module.exports = model;
